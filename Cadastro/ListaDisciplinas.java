@@ -1,51 +1,60 @@
 package Cadastro;
 
-public class ListaDisciplinas {
+public class ListaDisciplinas 
+{
 	private No primeiro;
 	private No ultimo;
 	private int quantNo; //Vai mostrar a quantidade de no da lista
 	
 	
-	public ListaDisciplinas() { 
+	public ListaDisciplinas() 
+	{ 
 		this.primeiro = null; //A lista nova não deve ter ninguém preenchido na primeira posição
 		this.ultimo = null; //A lista nova não deve ter ninguém na última posição
 		this.quantNo = 0;
 	}//************método construtor para criar uma lista vazia
 
 
-	public No getPrimeiro() {
+	public No getPrimeiro() 
+	{
 		return primeiro;
 	}
 
 
-	public void setPrimeiro(No primeiro) {
+	public void setPrimeiro(No primeiro) 
+	{
 		this.primeiro = primeiro;
 	}
 
 
-	public No getUltimo() {
+	public No getUltimo() 
+	{
 		return ultimo;
 	}
 
 
-	public void setUltimo(No ultimo) {
+	public void setUltimo(No ultimo) 
+	{
 		this.ultimo = ultimo;
 	}
 
 
-	public int getQuantNo() {
+	public int getQuantNo() 
+	{
 		return quantNo;
 	}//**********************toda vez que quiser saber a quantidade de No chama esse get
 
 
-	public void setQuantNo(int quantNo) {
+	public void setQuantNo(int quantNo) 
+	{
 		this.quantNo = quantNo;
 	}
 	
 	//******************************************************************
 	
 	
-	public boolean eVazia() {
+	public boolean eVazia() 
+	{
 		return (this.primeiro == null); //se o primeiro lugar está vazio então é pq a lista está vazia
 	}//método para saber se a lista está vazia
 	
@@ -61,18 +70,22 @@ public class ListaDisciplinas {
 		this.primeiro = novoNo;
 		this.quantNo++; //Vai acrescentando a cada nova formação de No
 	}//método para inserir na primeira posição
-	
 	*/
+	
 	//******************************************************************
 	
 	
-	public void inserirUltimo (Disciplina d) { //instanciou novo objeto do nó colocando como parâmetro a disciplina ** insere na ultima posição
+	public void inserirUltimo (Disciplina d) 
+	{ //instanciou novo objeto do nó colocando como parâmetro a disciplina ** insere na ultima posição
 		No novoNo = new No(d);//objeto No obs: toda vez que instaciamos um nó temos que preenchê-lo com algum parâmetro
-		if(this.eVazia()) {
+		if(this.eVazia()) 
+		{
 			this.primeiro = novoNo;
 		} 
-		else {
-		this.ultimo.setProx(novoNo);} //se a lista não for vazia então o próximo do ultimo será a posição do novo No  
+		else 
+		{
+		this.ultimo.setProx(novoNo);
+		} //se a lista não for vazia então o próximo do ultimo será a posição do novo No  
 		
 		this.ultimo = novoNo;
 		this.quantNo++; 
@@ -81,59 +94,72 @@ public class ListaDisciplinas {
 	
 	//******************************************************************
 	
-	public boolean removerNo (String nome) { //Metodo verdadeiro ou falso, tem como parametro a string da disciplina
+	public boolean removerNo (String nome) 
+	{ //Metodo verdadeiro ou falso, tem como parametro a string da disciplina
 		No atual = this.primeiro;//declarando um nó do tipo atual que recebe o primeiro nó
 		No anterior = null;
-		if(eVazia()) {
+		if(eVazia()) 
+		{
 			return false; //pq se ela for vazia não tem o que remover
-		} else {
-			while((atual != null) && (!atual.getD().getNome().equals(nome)));{ //Se o atual que é o primeiro não for vazio e além disso não tiver o nome procurado
+		} 
+		else 
+		{
+			while((atual != null) && (!atual.getD().getNome().equals(nome)))
+			{ //Se o atual que é o primeiro não for vazio e além disso não tiver o nome procurado
 				anterior = atual;
 				atual = atual.getProx(); //ou seja, vai passar para o próximo e dar andamento na busca pelo nome igual da disciplina
 			}
 			
-			if (atual == this.primeiro) {
-				if(this.primeiro == this.ultimo) {
+			if (atual == this.primeiro) 
+			{
+				if(this.primeiro == this.ultimo) 
+				{
 					this.ultimo = null;
 				}
 				this.primeiro = this.primeiro.getProx();//já que o primeiro não é o ultimo da lista então ele é substituido pelo valor do proximo, sendo removido
-			}else {
-				if(atual == this.ultimo) {
+			}
+			else 
+			{
+				if(atual == this.ultimo) 
+				{
 					this.ultimo = anterior; //para fazer a navegação
 				}
 				anterior.setProx(atual.getProx()); //o anterior aponta para o próximo do que era o atual, removeendo assim o atual
 			}
 			this.quantNo--;
-			return true;}
-		}//remover No
-	
+			return true;
+		}
+	}//remover No
 	//*****************************************************************
 		
-		public String pesquisarNo(String nome) {
+		public String pesquisarNo(String nome) 
+		{
 			String msg = "";
 			No atual = this.primeiro;
-			while((atual != null) && (!atual.getD().getNome().equals(nome))) {
+			while((atual != null) && (!atual.getD().getNome().equals(nome))) 
+			{
 				atual = atual.getProx();
 			}
 			return msg = "Nome: " +atual.getD().getNome()+"\n"+
 						 "Nota: " +atual.getD().getNota();			
 		}//Metodo para pesquisar No
 		
-		public String imprimirLista() {
+		public String imprimirLista() 
+		{
 			String msg="";
-			if(eVazia()) {
+			if(eVazia()) 
+			{
 				msg="A lista está vazia!";
-			} else {
+			} 
+			else 
+			{
 				No atual = this.primeiro;
-				while(atual != null) {
+				while(atual != null) 
+				{
 					msg += atual.getD().getNome() + " -> ";
 					atual = atual.getProx();
 				}
 			}
 			return msg;
 		} //Metodo para imprimir a lista de disciplinas
-	
-	
-	
-	
 }	

@@ -1,23 +1,25 @@
 package Cadastro;
 
-public class Disciplina {
-	
+public class Disciplina 
+{
 	private String nome; // atributos da classe disciplina 
 	private double nota; // devem ser privados para que não sejam acessados fora da classe sem ser pelo metodo get
 	
 	 
-	public String getNome() {
+	public String getNome() 
+	{
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNome(String nome) 
+	{
 		this.nome = nome;
 	}
-	public double getNota() {
+	public double getNota() 
+	{
 		return nota;
 	}
-	public void setNota(double nota) {
+	public void setNota(double nota) 
+	{
 		this.nota = nota;
-	}
-	
-	
+	}	
 }

@@ -2,9 +2,11 @@ package Cadastro;
 
 import java.util.Scanner;
 
-public class Principal {
+public class Principal 
+{
 
-	public static char menu() {
+	public static char menu() 
+	{
 		String msg;
 		System.out.println("------------------------------------------");
 		System.out.println("            Escolha uma opção");
@@ -19,15 +21,18 @@ public class Principal {
 		return msg.charAt(0);//vai retornar o primeiro caracter digitado pelo usuario
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		Scanner ler = new Scanner(System.in);
 		ListaDisciplinas lista = new ListaDisciplinas();//objeto listaDisciplinas chamado de lista
 		Disciplina d;
 		char opcao; //que será a opção digitada pelo usuário
 		
-		do {
+		do 
+		{
 			opcao = menu();
-			switch(opcao) {
+			switch(opcao) 
+			{
 			case '1':
 				System.out.println("------------ Adicionando disciplina------------");
 				d = new Disciplina();
@@ -39,16 +44,20 @@ public class Principal {
 				break;
 				
 			case '2':
-				if(lista.eVazia()) {
+				if(lista.eVazia()) 
+				{
 					System.out.println("A lista está vazia");
 				}
-				else {
+				else 
+				{
 					System.out.println("Excluir uma disciplina\nDigite o nome da disciplina: ");
 					String nome = ler.next();
-					if(lista.removerNo(nome)) {
+					if(lista.removerNo(nome)) 
+					{
 						System.out.println(nome+ " foi removido da lista de disciplinas com sucesso.");
 					}
-					else {
+					else 
+					{
 						System.out.println("Não consta disciplina "+nome+" na lista para que seja removida.");
 					}
 				}
@@ -72,12 +81,9 @@ public class Principal {
 				System.out.println("Opção inválida. Digite de acordo com as opções do menu.");
 				break;
 			
-			}
-			
-			
+			}	
 			
 		}while (opcao != '5'); 
-		
 		
 	}
 
