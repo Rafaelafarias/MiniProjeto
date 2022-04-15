@@ -51,7 +51,7 @@ public class ListaDisciplinas {
 	
 	//******************************************************************
 	
-	
+	/*
 	public void inserirPrimeiro(Disciplina d) {
 		No novoNo = new No(d);//objeto No que recebe o parametro o atributo d, que é do tipo Disciplina
 		if(this.eVazia()) {
@@ -62,11 +62,11 @@ public class ListaDisciplinas {
 		this.quantNo++; //Vai acrescentando a cada nova formação de No
 	}//método para inserir na primeira posição
 	
-	
+	*/
 	//******************************************************************
 	
 	
-	public void inserirUltimo (Disciplina d) { //instanciou novo objeto do nó colocando como parâmetro a disciplina
+	public void inserirUltimo (Disciplina d) { //instanciou novo objeto do nó colocando como parâmetro a disciplina ** insere na ultima posição
 		No novoNo = new No(d);//objeto No obs: toda vez que instaciamos um nó temos que preenchê-lo com algum parâmetro
 		if(this.eVazia()) {
 			this.primeiro = novoNo;
@@ -91,6 +91,7 @@ public class ListaDisciplinas {
 				anterior = atual;
 				atual = atual.getProx(); //ou seja, vai passar para o próximo e dar andamento na busca pelo nome igual da disciplina
 			}
+			
 			if (atual == this.primeiro) {
 				if(this.primeiro == this.ultimo) {
 					this.ultimo = null;
