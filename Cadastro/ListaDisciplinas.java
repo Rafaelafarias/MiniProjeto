@@ -58,22 +58,8 @@ public class ListaDisciplinas
 		return (this.primeiro == null); //se o primeiro lugar está vazio então é pq a lista está vazia
 	}//método para saber se a lista está vazia
 	
-	//******************************************************************
 	
-	/*
-	public void inserirPrimeiro(Disciplina d) {
-		No novoNo = new No(d);//objeto No que recebe o parametro o atributo d, que é do tipo Disciplina
-		if(this.eVazia()) {
-			this.ultimo = novoNo;
-		} //Se ela estiver vazia então a primeira posição também é a ultima
-		novoNo.setProx(this.primeiro); //já que o primeiro espaço foi preenchido com o novoNo, então o próximo espaço será a nova primeira posição
-		this.primeiro = novoNo;
-		this.quantNo++; //Vai acrescentando a cada nova formação de No
-	}//método para inserir na primeira posição
-	*/
-	
-	//******************************************************************
-	
+	//******************************************************************	
 	
 	public void inserirUltimo (Disciplina d) 
 	{ //instanciou novo objeto do nó colocando como parâmetro a disciplina ** insere na ultima posição
@@ -93,44 +79,51 @@ public class ListaDisciplinas
 	
 	
 	//******************************************************************
+
 	
-	public boolean removerNo (String nome) 
-	{ //Metodo verdadeiro ou falso, tem como parametro a string da disciplina
-		No atual = this.primeiro;//declarando um nó do tipo atual que recebe o primeiro nó
-		No anterior = null;
-		if(eVazia()) 
-		{
-			return false; //pq se ela for vazia não tem o que remover
-		} 
-		else 
-		{
-			while((atual != null) && (!atual.getD().getNome().equals(nome)))
-			{ //Se o atual que é o primeiro não for vazio e além disso não tiver o nome procurado
-				anterior = atual;
-				atual = atual.getProx(); //ou seja, vai passar para o próximo e dar andamento na busca pelo nome igual da disciplina
-			}
-			
-			if (atual == this.primeiro) 
-			{
-				if(this.primeiro == this.ultimo) 
-				{
-					this.ultimo = null;
-				}
-				this.primeiro = this.primeiro.getProx();//já que o primeiro não é o ultimo da lista então ele é substituido pelo valor do proximo, sendo removido
-			}
-			else 
-			{
-				if(atual == this.ultimo) 
-				{
-					this.ultimo = anterior; //para fazer a navegação
-				}
-				anterior.setProx(atual.getProx()); //o anterior aponta para o próximo do que era o atual, removeendo assim o atual
-			}
-			this.quantNo--;
-			return true;
-		}
-	}//remover No
-	//*****************************************************************
+	public boolean removerNo (String nome) { //Metodo verdadeiro ou falso, tem como parametro a string da disciplina
+        No atual = this.primeiro;//declarando um nó do tipo atual que recebe o primeiro nó
+        No anterior = null;
+        if(eVazia()) 
+        {
+            return false; //pq se ela for vazia não tem o que remover
+        } 
+
+        else 
+        {
+            while(( atual != null ) && (!atual.getD().getNome().equals(nome)) && (atual.getProx() != null))
+            { //Se o atual que é o primeiro não for vazio e além disso não tiver o nome procurado
+                anterior = atual;
+                atual = atual.getProx(); //ou seja, vai passar para o próximo e dar andamento na busca pelo nome igual da disciplina
+                
+            }
+            if((!atual.getD().getNome().equals(nome)) && (atual.getProx() == null)) 
+            {//para o caso da disciplina digitada não combinar com nenhum item da lista 
+            	return false;
+            }
+            else if ((atual == this.primeiro) && (atual.getD().getNome().equals(nome)))
+            {
+                if(this.primeiro == this.ultimo) 
+                {
+                    this.ultimo = null;
+                }
+                this.primeiro = this.primeiro.getProx();//já que o primeiro não é o ultimo da lista então ele é substituido pelo valor do proximo, sendo removido
+            }
+            else 
+            {
+                if(atual == this.ultimo) 
+                {
+                    this.ultimo = anterior; //para fazer a navegação
+                }
+                anterior.setProx(atual.getProx()); //o anterior aponta para o próximo do que era o atual, removendo assim o atual
+            }
+            this.quantNo--;
+            return true;
+        }
+    }//remover No
+	
+	
+	//******************************************************************
 		
 		public String pesquisarNo(String nome) 
 		{

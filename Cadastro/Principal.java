@@ -38,7 +38,7 @@ public class Principal
 				d = new Disciplina();
 				System.out.print("Disciplina : ");
 				d.setNome(ler.next());
-				System.out.print("| Nota : ");
+				System.out.print("Nota : ");
 				d.setNota(ler.nextDouble());
 				lista.inserirUltimo(d);
 				break;
@@ -52,13 +52,14 @@ public class Principal
 				{
 					System.out.println("Excluir uma disciplina\nDigite o nome da disciplina: ");
 					String nome = ler.next();
+							
 					if(lista.removerNo(nome)) 
 					{
 						System.out.println(nome+ " foi removido da lista de disciplinas com sucesso.");
-					}
-					else 
+					}	
+					else
 					{
-						System.out.println("Não consta disciplina "+nome+" na lista para que seja removida.");
+						System.out.println("A disciplina não pode ser removida pois não consta na lista.");
 					}
 				}
 				break;	
